@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import { login, signup } from './authActions'
 import Row from '../common/layout/row'
 import Grid from '../common/layout/grid'
-import If from '../common/operador/if'
+
 import Messages from '../common/msg/messages'
 import Input from '../common/form/inputAuth'
 
@@ -37,32 +37,35 @@ class Auth extends Component {
                     <form onSubmit={handleSubmit(v => this.onSubmit(v))}>
                         <Field component={Input} type='input' name='name'
                             placeholder='Nome' icon='user' hide={loginMode} />
-                        <Filde component={Input} type="email" name="email"
+                        <Field component={Input} type="email" name="email"
                             placeholder="E-mail" icon='envelope' />
                         <Field component={Input} type='password' name='password'
                             placeholder='Senha' icon='lock' />
                         <Field component={Input} type="password" name="confirm_password"
                             placeholder="Confirmar Senha" icon='lock' hide={loginMode} />
-                            <Row>
-                                <Grid cols="4">
-                                    <button type="submit"
-                                        className='btn btn-primary btn-block btn-flat'>
-                                            {loginMode ? 'Entrar' : 'Registrar'}
-                                        </button>
-                                </Grid>
-                            </Row>
+                        <Row>
+                            <Grid cols="4">
+                                <button type="submit"
+                                    className='btn btn-primary btn-block btn-flat'>
+
+                                    {loginMode ? 'Entrar' : 'Registrar'}
+                                </button>
+                            </Grid>
+                        </Row>
                     </form>
                     <br />
                     <a onClick={() => this.changeMode()}>
-                        {loginMode ? 'Novo usuário? Registrar aqio' : 'Já é cadastrado? Entrar aqui'}
+                        {loginMode ? 'Novo usuário? Registrar aqui' : 'Já é cadastrado? Entrar aqui'}
                     </a>
 
                 </div>
-                <Messages/>
+                <Messages />
             </div>
         )
     }
 }
+
+
 
 Auth = reduxForm({ form: 'authForm' })(Auth)
 const mapDispatchToProps = dispatch => bindActionCreators({ login, signup }, dispatch)
