@@ -1,6 +1,6 @@
-import { toastr } from "react-redux-toastr";
-import axios from "axios";
-import consts from "../consts";
+import { toastr } from 'react-redux-toastr'
+import axios from 'axios'
+import consts from '../consts'
 
 export function login(values) {
     return submit(values, `${consts.OAPI_URL}/login`)
@@ -15,7 +15,7 @@ function submit(values, url) {
         axios.post(url, values)
             .then(resp => {
                 dispatch([
-                    { type: 'USER_FERCHED', payload: resp.data }
+                    { type: 'USER_FETCHED', payload: resp.data }
                 ])
             })
             .catch(e => {
